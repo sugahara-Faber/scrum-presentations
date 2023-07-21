@@ -29,6 +29,7 @@ jobs:
         uses: hiono/marp-cli-action@v2
         with:
           generate-pptx: false
+          generate-pdf: false
  
       - name: Build index
         run: bash ./build-index.sh
@@ -37,11 +38,11 @@ jobs:
         uses: actions/configure-pages@v2
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v2
         with:
           # Upload entire repository
           path: '.'
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v2

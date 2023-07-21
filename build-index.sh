@@ -20,7 +20,6 @@ cat << HTML > index.html
       <b>${GITHUB_ACTOR}</b> updated this page at $updated_at
     </a>
 
-
     <img id="build-status" src="https://github.com/${GITHUB_REPOSITORY}/actions/workflows/index.yml/badge.svg?branch=master"
       alt="Index build status">
   </li>
@@ -38,7 +37,6 @@ for file in `ls -r *.md | sed -e "s/.md//g"`; do
     <a href="./$file.html" target="_blank">$title</a>
     <span>
       [<a href="./$file.md" target="_blank">Markdown</a>]
-      [<a href="./$file.pdf" target="_blank">PDF</a>]
     </span>
   </li>
 HTML
