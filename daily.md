@@ -64,3 +64,9 @@ To help stakeholders making decision.
 - What's the problem between the estimation and the reality?
 
 - How can we solve the problem?
+
+---
+
+If you need to update this document, [submit a pull request on this slide](https://github.com/sugahara-Faber/scrum-presentations/blob/master/daily.md).
+
+Let's have a discussion to improve our team!
