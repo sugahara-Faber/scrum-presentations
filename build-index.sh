@@ -27,16 +27,16 @@ HTML
 
 IFS=$'\n'
 
-for file in `ls -r *.md | sed -e "s/.md//g"`; do
+for file in `find -path "./src/**/*.md" | sed -e "s/.md//g"`; do
   title=`grep "title:" $file.md | cut -f2 -d":" | xargs`
 
   if [ "x$title" != "x" ]; then
     echo -e "$file:\t[$title]"
     cat << HTML >> index.html
   <li>
-    <a href="./$file.html" target="_blank">$title</a>
+    <a href=".${file#./src}.html" target="_blank">$title</a>
     <span>
-      [<a href="./$file.md" target="_blank">Markdown</a>]
+      [<a href="https://github.com/${GITHUB_REPOSITORY}/blob/master/${file#./}.md" target="_blank">Markdown</a>]
     </span>
   </li>
 HTML

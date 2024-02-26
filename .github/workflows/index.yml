@@ -23,26 +23,27 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Convert Markdown into HTML and PDF
-        uses: hiono/marp-cli-action@v2
+        uses: docker://marpteam/marp-cli:latest
         with:
-          generate-pptx: false
-          generate-pdf: false
+          args: -I src/ -o build/
+        env:
+          MARP_USER: root:root
  
       - name: Build index
-        run: bash ./build-index.sh
+        run: bash ./build-index.sh ; mv index.html build/
 
       - name: Setup Pages
-        uses: actions/configure-pages@v2
+        uses: actions/configure-pages@v4
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          # Upload build dir
+          path: build
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
